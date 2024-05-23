@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Disciplina {
 
     private String nome;
+    private int idDisciplina;
     private int cargaHoraria;
     private int ano, semestre;
 
@@ -18,8 +19,9 @@ public class Disciplina {
         matriculas = new ArrayList<>();
     }
 
-    public Disciplina(String nome, int cargaHoraria, int ano, int semestre, Professor professor) {
+    public Disciplina(String nome, int idDisciplina, int cargaHoraria, int ano, int semestre, Professor professor) {
         this.nome = nome;
+        this.idDisciplina = idDisciplina;
         this.cargaHoraria = cargaHoraria;
         this.ano = ano;
         this.semestre = semestre;
@@ -69,5 +71,13 @@ public class Disciplina {
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
+    }
+
+    public int getIdDisciplina() {
+        return idDisciplina;
+    }
+
+    public void setIdDisciplina(int idDisciplina) {
+        this.idDisciplina = idDisciplina;
     }
 }

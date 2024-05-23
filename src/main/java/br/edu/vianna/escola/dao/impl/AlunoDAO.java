@@ -42,7 +42,6 @@ public class AlunoDAO implements GenericsDAO<Aluno, Integer> {
         pst.setDouble(6, aluno.getValorMensalidade() );
         //Execução
         pst.execute();
-
     }
 
     @Override

@@ -40,7 +40,8 @@ public class MatriculaDAO implements GenericsDAO<Matricula, Integer>{
         c = ConnectionFactory.getConnection();
 
         String sql = "UPDATE fpoo.matricula\n" +
-                "SET id_aluno=?, id_disciplina=?, nota=?, numeroFaltas=?;";
+                "SET nota=?, numeroFaltas=?" +
+                "WHERE id_aluno=?, id_disciplina=?;";
 
         PreparedStatement pst = c.prepareStatement(sql);
         pst.setInt(1, matricula.getAluno().getId());
@@ -71,9 +72,9 @@ public class MatriculaDAO implements GenericsDAO<Matricula, Integer>{
 
         c = ConnectionFactory.getConnection();
 
-        String sql = "SELECT id_aluno, id_disciplina, nota, numeroFaltas " +
+        String sql = "SELECT nota, numeroFaltas " +
                 "FROM fpoo.matricula " +
-                "WHERE id_aluno=?, id_disciplina=?; ";
+                "WHERE id_aluno=?, id_disciplina=?;";
 
         PreparedStatement pst = c.prepareStatement(sql);
         pst.setInt(1, id);
@@ -105,6 +106,7 @@ public class MatriculaDAO implements GenericsDAO<Matricula, Integer>{
 
         ArrayList<Matricula> listaMatricula = new ArrayList<>();
         while (rs.next()){
+
             Matricula m = new Matricula(new AlunoDAO().buscarUm(rs.getInt("id_aluno")),
                     new DisciplinaDAO().buscarUm(rs.getInt("id_disciplina")),
                     rs.getDouble("nota"),

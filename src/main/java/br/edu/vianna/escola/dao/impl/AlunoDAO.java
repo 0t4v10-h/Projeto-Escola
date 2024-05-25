@@ -159,8 +159,8 @@ public class AlunoDAO implements GenericsDAO<Aluno, Integer> {
             String dt = rs.getString("data_ultimo_acesso");
             //2024-05-01 22:00:00.000
             if (dt != null && !dt.isEmpty() && !dt.isBlank()) {
-                LocalDateTime dt1 = LocalDateTime.parse(dt,
-                        DateTimeFormatter.ofPattern("YYYY-mm-dd HH:MM"));
+                LocalDateTime dt1 = LocalDateTime.parse(dt.substring(0,16),
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
                 a.setDataUltimoAcesso(dt1);
             }
         }

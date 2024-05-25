@@ -4,7 +4,14 @@
  */
 package br.edu.vianna.escola.view;
 
+import br.edu.vianna.escola.dao.impl.AlunoDAO;
+import br.edu.vianna.escola.dao.impl.ProfessorDAO;
+import br.edu.vianna.escola.model.Aluno;
+import br.edu.vianna.escola.model.Professor;
+import br.edu.vianna.escola.model.Usuario;
+
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
 
 /**
  *
@@ -32,8 +39,8 @@ public class ViewLogin extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jtfLogin = new javax.swing.JTextField();
+        jtfSenha = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -77,8 +84,8 @@ public class ViewLogin extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jTextField2)
+                    .addComponent(jtfLogin)
+                    .addComponent(jtfSenha)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -86,9 +93,9 @@ public class ViewLogin extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(34, Short.MAX_VALUE))
@@ -121,14 +128,33 @@ public class ViewLogin extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        if(jTextField1.getText().equals("admin") && jTextField2.getText().equals("123")){
-            
-            setVisible(false);
-            
-        }else{
-            JOptionPane.showMessageDialog(rootPane, "Login ou senha incorreta!!!");
-            jTextField1.setText("");
-            jTextField2.setText("");
+        try{          
+            String login = jtfLogin.getText();
+            String senha = jtfSenha.getText();
+
+            Aluno a = new AlunoDAO().buscarAlunoByLoginAndSenha(login, senha);
+
+            if(a != null){
+
+                setVisible(false);
+
+            }else{
+                
+                Professor p = new ProfessorDAO().buscarAlunoByLoginAndSenha(login, senha);
+                
+                if(p != null){
+                    setVisible(false);
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "Login ou senha incorreta!!!");
+                    jtfLogin.setText("");
+                    jtfSenha.setText("");
+                    jtfLogin.requestFocus();
+                }
+            }
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(rootPane, "Erro de banco!");
+        }catch (ClassNotFoundException ex){
+            JOptionPane.showMessageDialog(rootPane, "Erro de Driver!");
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -180,7 +206,13 @@ public class ViewLogin extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jtfLogin;
+    private javax.swing.JTextField jtfSenha;
     // End of variables declaration//GEN-END:variables
+
+        private Usuario user;
+        
+        public Usuario getUser(){
+            return user;
+        }
 }

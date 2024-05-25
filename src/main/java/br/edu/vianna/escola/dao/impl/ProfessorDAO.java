@@ -37,7 +37,7 @@ public class ProfessorDAO implements GenericsDAO<Professor, Integer> {
         }catch (NoSuchAlgorithmException e){
             throw new SQLException("Erro ao gerar a senha!");
         }
-        pst.setString(5, professor.getEspecializacao().name());
+        pst.setString(5, professor.getEspecializacao().toString());
         pst.setInt(6, professor.getTempoCasa());
         pst.setDouble(7, professor.getValorHoraAula());
 
@@ -116,6 +116,47 @@ public class ProfessorDAO implements GenericsDAO<Professor, Integer> {
                 LocalDateTime dt1 = LocalDateTime.parse(dt, DateTimeFormatter.ofPattern("YYYY-mm-dd HH:MM"));
                 p.setDataUltimoAcesso(dt1);
             }
+        }
+
+        return p;
+    }
+
+    public Professor buscarAlunoByLoginAndSenha(String login, String senha) throws SQLException, ClassNotFoundException {
+
+        c = ConnectionFactory.getConnection();
+        String sql = "SELECT idprofessor, nome, email, login, senha, especializacao, tempo_casa, valor_hora_aula, data_ultimo_acesso" +
+                "FROM fpoo.professor " +
+                "WHERE login=? and senha=?;";
+
+        PreparedStatement pst = c.prepareStatement(sql);
+
+        pst.setString(1, login);
+        try {
+            pst.setString(2, CryptoUtils.md5(senha) );
+        } catch (NoSuchAlgorithmException e) {
+            throw new SQLException("Erro na Criptografia");
+        }
+
+        ResultSet rs = pst.executeQuery();
+
+        Professor p = null;
+        if (rs.next()) {
+            p = new Professor();
+            p.setId(rs.getInt("idprofessor"));
+            p.setNome(rs.getString("nome"));
+            p.setEmail(rs.getString("email"));
+            p.setLogin(rs.getString("login"));
+            p.setSenha(rs.getString("senha"));
+            String dt = rs.getString("data_ultimo_acesso");
+            //2024-05-01 22:00:00.000
+            if (dt != null && !dt.isEmpty() && !dt.isBlank()) {
+                LocalDateTime dt1 = LocalDateTime.parse(dt.substring(0,16),
+                        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+                p.setDataUltimoAcesso(dt1);
+            }
+            p.setEspecializacao(EEspecializacao.valueOf("especializacao"));
+            p.setTempoCasa(rs.getInt("tempo_casa"));
+            p.setValorHoraAula(rs.getDouble("valor_hora_aula"));
         }
 
         return p;

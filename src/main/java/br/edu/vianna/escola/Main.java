@@ -31,7 +31,7 @@ public class Main {
         }
 
 
-        Professor p = new Professor(1, "Ze Ruela", "Ze@ruela.com", "ruela", "111", null, EEspecializacao.GRADUACAO, 2, 100.00);
+        Professor p = new Professor(1, "Ze Ruela", "Ze@ruela.com", "ruela", "111", null, EEspecializacao.GRADUACAO, 2, 200.00);
 
         try{
             new ProfessorDAO().inserir(p);

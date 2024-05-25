@@ -4,6 +4,8 @@
  */
 package br.edu.vianna.escola.view;
 
+import br.edu.vianna.escola.model.Professor;
+import br.edu.vianna.escola.model.Usuario;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,12 +30,44 @@ public class ViewPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JFrame = new javax.swing.JLabel();
+        jMenu3 = new javax.swing.JMenu();
+        jlBemVindo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jmnAluno = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jmnProfessor = new javax.swing.JMenu();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem10 = new javax.swing.JMenuItem();
+        jmnRelatorio = new javax.swing.JMenu();
+        jMenu8 = new javax.swing.JMenu();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenu11 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+
+        jMenu3.setText("jMenu3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("HOME");
@@ -48,8 +82,8 @@ public class ViewPrincipal extends javax.swing.JFrame {
             }
         });
 
-        JFrame.setFont(new java.awt.Font("URW Chancery L", 1, 18)); // NOI18N
-        JFrame.setText("Bem Vindo Fulano de Tal");
+        jlBemVindo.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jlBemVindo.setText("Bem Vindo Fulano de Tal");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 0));
 
@@ -71,11 +105,119 @@ public class ViewPrincipal extends javax.swing.JFrame {
                 .addGap(0, 188, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jmnAluno.setText("Aluno");
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenu6.setText("Cadastro");
+
+        jMenuItem3.setText("Alterar Dados");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem3);
+
+        jMenuItem1.setText("Dados Financeiros");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem1);
+
+        jmnAluno.add(jMenu6);
+        jmnAluno.add(jSeparator1);
+
+        jMenuItem2.setText("Matricula");
+        jmnAluno.add(jMenuItem2);
+
+        jMenuItem4.setText("Minhas Disciplinas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jmnAluno.add(jMenuItem4);
+        jmnAluno.add(jSeparator2);
+
+        jMenuItem5.setText("Sair");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jmnAluno.add(jMenuItem5);
+
+        jMenuBar1.add(jmnAluno);
+
+        jmnProfessor.setText("Professor");
+
+        jMenu7.setText("Cadastro");
+
+        jMenuItem6.setText("Aluno");
+        jMenu7.add(jMenuItem6);
+
+        jMenuItem7.setText("Professor");
+        jMenu7.add(jMenuItem7);
+
+        jMenuItem8.setText("Disciplina");
+        jMenu7.add(jMenuItem8);
+
+        jmnProfessor.add(jMenu7);
+        jmnProfessor.add(jSeparator3);
+
+        jMenuItem9.setText("Lançar Notas e Faltas");
+        jmnProfessor.add(jMenuItem9);
+        jmnProfessor.add(jSeparator4);
+
+        jMenuItem10.setText("Sair");
+        jmnProfessor.add(jMenuItem10);
+
+        jMenuBar1.add(jmnProfessor);
+
+        jmnRelatorio.setText("Relatórios");
+
+        jMenu8.setText("Financeiro");
+
+        jMenuItem12.setText("Pagamento Professores");
+        jMenu8.add(jMenuItem12);
+
+        jMenu11.setText("Mensalidade Alunos");
+        jMenu8.add(jMenu11);
+
+        jMenuItem13.setText("Lucro Mensal");
+        jMenu8.add(jMenuItem13);
+
+        jmnRelatorio.add(jMenu8);
+
+        jMenu9.setText("Aluno");
+
+        jMenuItem14.setText("Aprovados");
+        jMenu9.add(jMenuItem14);
+
+        jMenuItem15.setText("Reprovados");
+        jMenu9.add(jMenuItem15);
+
+        jmnRelatorio.add(jMenu9);
+
+        jMenu10.setText("Professor");
+
+        jMenuItem16.setText("Disciplinas");
+        jMenu10.add(jMenuItem16);
+
+        jMenuItem17.setText("Lançamentos");
+        jMenu10.add(jMenuItem17);
+
+        jmnRelatorio.add(jMenu10);
+
+        jMenuBar1.add(jmnRelatorio);
+
+        jMenu5.setText("Ajuda");
+
+        jMenuItem11.setText("Suporte");
+        jMenu5.add(jMenuItem11);
+
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -85,16 +227,16 @@ public class ViewPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(JFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jlBemVindo)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(JFrame)
+                .addGap(37, 37, 37)
+                .addComponent(jlBemVindo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -109,10 +251,42 @@ public class ViewPrincipal extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
+        jmnAluno.setVisible(false);
+        jmnProfessor.setVisible(false);
+        jmnRelatorio.setVisible(false);
+        
         ViewLogin vl = new ViewLogin(this, true);
         vl.setVisible(true);
         
+        user = vl.getUser();
+        
+        if(user instanceof Professor){
+            jmnProfessor.setVisible(true);
+            jmnRelatorio.setVisible(true);
+        }else{
+            jmnAluno.setVisible(true);
+
+        }
+        
+        jlBemVindo.setText("Bem vindo " +user.getNome());
+        
     }//GEN-LAST:event_formWindowOpened
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,11 +324,47 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JFrame;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu10;
+    private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JLabel jlBemVindo;
+    private javax.swing.JMenu jmnAluno;
+    private javax.swing.JMenu jmnProfessor;
+    private javax.swing.JMenu jmnRelatorio;
     // End of variables declaration//GEN-END:variables
+
+        private Usuario user;
+        
+        public Usuario getUser(){
+            return user;
+        }
 }
